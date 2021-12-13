@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css.css">
+        <script src="fontawesome-free-6.0.0-beta3-web\js\all.min.js"></script>
+        <link rel="stylesheet" href="fontawesome-free-6.0.0-beta3-web\css\all.min.css">
+        
+    </head>
+    <body>
+        <div class="d1">
+            <div class="d11">
+                <div class="symbol">
+                    <div class="icon">
+                        <div class="menu-icon">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="title">
+                    Website todo
+                </div>
+            
+            </div>
+            <div class="d12">
+
+            </div>
+            <div class="d13">
+                <ul id='list'>
+                </ul>
+                <button onclick="add_item()"><span class="plus"></span> New task</button>
+            </div>
+        </div>
+        <script> 
+            // function add_item(){
+            //     var a = prompt("please enter a new task!");
+            //     if(a!=null){
+            //         var ul=    document.getElementById('list');
+            //         var li =   document.createElement('li');
+            //         li.appendChild( document.createTextNode(a));
+            //         ul.appendChild(li);
+            //     }
+            // }
+            function add_item(){
+                var a = prompt("please enter a new task!");
+                if(a!=null){
+                    var ul=    document.getElementById('list');
+                    var candidate = a;
+                    var li =   document.createElement('li');
+                    
+                    li.setAttribute('id',a);
+                    var firstTime = 0;
+                    var aa = true;
+                    li.onclick = function(id) {
+                        if(firstTime%2==0){
+                            if(aa){
+                            firstTime++;
+                            aa = false;
+                            li.style.textDecorationLine = "line-through";
+                            li.style.textDecorationColor = "#af7eeb";
+                            var icon = document.createElement('span');
+                            icon.setAttribute("id", "ic");
+                            icon.classList.add("fas");
+                            icon.classList.add("fa-trash-alt");
+                            icon.style.fontSize="large";
+                            icon.style.cssFloat = "right";
+                            icon.style.marginRight = "32px";
+                            li.appendChild(icon);
+                            const root = document.querySelector(":root");
+                            li.style.setProperty("--pseudo-backgroundcolor", "#af7eeb"); 
+                        }
+                        else {
+                           
+                            firstTime++;
+                            li.style.textDecorationLine = "line-through";
+                            li.style.textDecorationColor = "#af7eeb";
+                            var icon = document.createElement('span');
+                            icon.style.fontSize="large";
+                            icon.style.cssFloat = "right";
+                            icon.style.marginRight = "32px";
+                            li.appendChild(icon);
+                            const root = document.querySelector(":root");
+                            li.style.setProperty("--pseudo-backgroundcolor", "#af7eeb");  
+                        }}
+                        else if(firstTime%2!=0) {
+                            firstTime++;
+                            li.style.textDecorationLine = "none";
+                            li.style.textDecorationColor = "white";
+                            var ic = document.getElementById("ic");
+                            li.removeChild(ic);
+                            const root = document.querySelector(":root");
+                            li.style.setProperty("--pseudo-backgroundcolor", "white"); 
+                        }
+                    }                    
+                    li.appendChild(document.createTextNode(a));
+                    
+                    // var icon = 
+                    // li.appendChild(icon)
+                    ul.appendChild(li);
+                }
+            }
+        
+        </script>
+
+
+
+    </body>
+    <footer>
+        
+    </footer>
+</html>
