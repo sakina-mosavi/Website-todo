@@ -55,9 +55,8 @@
                     var aa = true;
                     li.onclick = function(id) {
                         if(firstTime%2==0){
-                            if(aa){
+                            
                             firstTime++;
-                            aa = false;
                             li.style.textDecorationLine = "line-through";
                             li.style.textDecorationColor = "#af7eeb";
                             var icon = document.createElement('span');
@@ -71,21 +70,9 @@
                             const root = document.querySelector(":root");
                             li.style.setProperty("--pseudo-backgroundcolor", "#af7eeb"); 
                         }
-                        else {
-                           
-                            firstTime++;
-                            li.style.textDecorationLine = "line-through";
-                            li.style.textDecorationColor = "#af7eeb";
-                            var icon = document.createElement('span');
-                            icon.style.fontSize="large";
-                            icon.style.cssFloat = "right";
-                            icon.style.marginRight = "32px";
-                            li.appendChild(icon);
-                            const root = document.querySelector(":root");
-                            li.style.setProperty("--pseudo-backgroundcolor", "#af7eeb");  
-                        }}
                         else if(firstTime%2!=0) {
                             firstTime++;
+                            aa = false;
                             li.style.textDecorationLine = "none";
                             li.style.textDecorationColor = "white";
                             var ic = document.getElementById("ic");
