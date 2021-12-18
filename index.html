@@ -30,7 +30,7 @@
             <div class="d13">
                 <ul id='list'>
                 </ul>
-                <button onclick="add_item()"><span class="plus"></span> New task</button>
+                <button class="button" onclick="add_item()"><span class="plus"></span> New task</button>
             </div>
         </div>
         <script> 
@@ -43,48 +43,49 @@
             //         ul.appendChild(li);
             //     }
             // }
+            function capitalize(s){
+                return s[0].toUpperCase() + s.slice(1);
+            }
             function add_item(){
-                var a = prompt("please enter a new task!");
+                var number = 1;
+                var b = prompt("please enter a new task!");
+                
+                a = capitalize(b);
                 if(a!=null){
-                    var ul=    document.getElementById('list');
-                    var candidate = a;
+                    var ul=  document.getElementById('list');
                     var li =   document.createElement('li');
-                    
-                    li.setAttribute('id',a);
+                    li.setAttribute("id", a);
                     var firstTime = 0;
-                    var aa = true;
-                    li.onclick = function(id) {
+                    li.onclick = function(a, number) {
                         if(firstTime%2==0){
-                            
                             firstTime++;
                             li.style.textDecorationLine = "line-through";
                             li.style.textDecorationColor = "#af7eeb";
                             var icon = document.createElement('span');
-                            icon.setAttribute("id", "ic");
+                            icon.setAttribute("id", b);
                             icon.classList.add("fas");
                             icon.classList.add("fa-trash-alt");
                             icon.style.fontSize="large";
                             icon.style.cssFloat = "right";
                             icon.style.marginRight = "32px";
+                            
                             li.appendChild(icon);
                             const root = document.querySelector(":root");
                             li.style.setProperty("--pseudo-backgroundcolor", "#af7eeb"); 
                         }
-                        else if(firstTime%2!=0) {
+                        else{
                             firstTime++;
-                            aa = false;
                             li.style.textDecorationLine = "none";
-                            li.style.textDecorationColor = "white";
-                            var ic = document.getElementById("ic");
-                            li.removeChild(ic);
                             const root = document.querySelector(":root");
                             li.style.setProperty("--pseudo-backgroundcolor", "white"); 
+                            let ic = document.getElementById(a);
+                            this.removeChild(li.lastElementChild);
+                            
                         }
-                    }                    
+                     
+                    }     
+
                     li.appendChild(document.createTextNode(a));
-                    
-                    // var icon = 
-                    // li.appendChild(icon)
                     ul.appendChild(li);
                 }
             }
